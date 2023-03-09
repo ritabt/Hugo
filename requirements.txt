@@ -1,3 +1,5 @@
+pip==21.3.1
+openai
 transformers
 h5py
 pandas

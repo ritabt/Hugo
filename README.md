@@ -1,4 +1,8 @@
-# Fine-grained Image Captioning with CLIP Reward
+# Hugo
+
+## Tools Used
+
+### Fine-grained Image Captioning with CLIP Reward
 
 * Authors: [Jaemin Cho](https://j-min.io), [David Seunghyun Yoon](https://david-yoon.github.io/), [Ajinkya Kale](https://www.linkedin.com/in/kaleajinkya/), [Franck Dernoncourt](https://research.adobe.com/person/franck-dernoncourt), [Trung Bui](https://sites.google.com/site/trungbuistanford/), [Mohit Bansal](https://www.cs.unc.edu/~mbansal/)
 * [Findings of NAACL 2022 Paper](https://arxiv.org/abs/2205.13115)

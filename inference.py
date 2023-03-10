@@ -208,7 +208,7 @@ def call_chat_gpt(prompt, to_print=False):
         enablePrint()
         print("____________Start Generating ChatGPT Story___________")
         blockPrint()
-    openai.api_key = ''
+    # openai.api_key = ''
     model_engine = 'text-davinci-003'
     # prompt = "Tell me a short story about a yellow stuffed animal wearing a hat with the city skyline behind it"
     completion = openai.Completion.create(engine=model_engine, prompt=prompt, max_tokens=1024, n=1,stop=None,temperature=0.7)
@@ -236,6 +236,7 @@ useGPT = True
 
 
 images_path = str(sys.argv[1])
+openai.api_key = str(sys.argv[2])
 captions = run_inference(images_path, to_print=True)
 if useGPT:
     prompt = make_prompt(captions)

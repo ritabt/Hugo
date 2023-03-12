@@ -232,14 +232,14 @@ def make_prompt(captions):
         prompt += " " + captions[k]['caption'][0]
     return prompt
 
-useGPT = True
+# useGPT = True
 
 
-images_path = str(sys.argv[1])
-openai.api_key = str(sys.argv[2])
-captions = run_inference(images_path, to_print=True)
-if useGPT:
-    prompt = make_prompt(captions)
-    call_chat_gpt(prompt, to_print=True)
+# images_path = str(sys.argv[1])
+# openai.api_key = str(sys.argv[2])
+# captions = run_inference(images_path, to_print=True)
+# if useGPT:
+#     prompt = make_prompt(captions)
+#     call_chat_gpt(prompt, to_print=True)
 
 

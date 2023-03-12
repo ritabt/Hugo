@@ -194,11 +194,11 @@ def run_inference(images_path, save_path=None, to_print=False):
         
     return output
 
-def call_chat_gpt(prompt, to_print=False):
+def call_chat_gpt(prompt, api_key, to_print=False):
     if to_print:
         print("____________Start Generating ChatGPT Story___________")
         
-    # openai.api_key = ''
+    openai.api_key = api_key
     model_engine = 'text-davinci-003'
     # prompt = "Tell me a short story about a yellow stuffed animal wearing a hat with the city skyline behind it"
     completion = openai.Completion.create(engine=model_engine, prompt=prompt, max_tokens=1024, n=1,stop=None,temperature=0.7)

@@ -1,12 +1,6 @@
 # Ignore warnings
 import sys, os, warnings, pdb
 warnings.filterwarnings('ignore')
-def blockPrint():
-    sys.stdout = open(os.devnull, 'w')
-# Restore
-def enablePrint():
-    sys.stdout = sys.__stdout__
-blockPrint()
 
 import torch
 import torch.nn as nn
@@ -171,16 +165,14 @@ def caption_image(img_path, args, to_print=False):
         sents = utils.decode_sequence(model.vocab, seq)
 
     if to_print:
-        enablePrint()
         print(sents)
-        blockPrint()
+        
     return sents
 
 def run_inference(images_path, save_path=None, to_print=False):
     if to_print:
-        enablePrint()
         print("______________Start Generating Captions______________")
-        blockPrint()
+        
     if save_path is None:
         save_path = images_path + '/captions.json'
     args = load_models()
@@ -198,30 +190,26 @@ def run_inference(images_path, save_path=None, to_print=False):
         json.dump(output, outfile)
 
     if to_print:
-        enablePrint()
         print("______________Done Generating Captions______________")
-        blockPrint()
+        
     return output
 
 def call_chat_gpt(prompt, to_print=False):
     if to_print:
-        enablePrint()
         print("____________Start Generating ChatGPT Story___________")
-        blockPrint()
+        
     # openai.api_key = ''
     model_engine = 'text-davinci-003'
     # prompt = "Tell me a short story about a yellow stuffed animal wearing a hat with the city skyline behind it"
     completion = openai.Completion.create(engine=model_engine, prompt=prompt, max_tokens=1024, n=1,stop=None,temperature=0.7)
     message = completion.choices[0].text
     if to_print:
-        enablePrint()
         print("INPUT PROMPT: ", prompt)
         print("CHATGPT OUTPUT: ", message)
-        blockPrint()
+        
     if to_print:
-        enablePrint()
         print("____________Done Generating ChatGPT Story___________")
-        blockPrint()
+        
     return message
 
 def make_prompt(captions):

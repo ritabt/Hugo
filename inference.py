@@ -169,6 +169,7 @@ def caption_image(img_path, args, to_print=False):
         
     return sents
 
+# Loop through the images in the folder and predict a caption for each image
 def run_inference(images_path, save_path=None, to_print=False):
     if to_print:
         print("______________Start Generating Captions______________")
@@ -194,13 +195,13 @@ def run_inference(images_path, save_path=None, to_print=False):
         
     return output
 
-def call_chat_gpt(prompt, api_key, to_print=False):
+# Call GPT3 on the prompt given
+def call_gpt(prompt, api_key, to_print=False):
     if to_print:
         print("____________Start Generating ChatGPT Story___________")
         
     openai.api_key = api_key
     model_engine = 'text-davinci-003'
-    # prompt = "Tell me a short story about a yellow stuffed animal wearing a hat with the city skyline behind it"
     completion = openai.Completion.create(engine=model_engine, prompt=prompt, max_tokens=1024, n=1,stop=None,temperature=0.7)
     message = completion.choices[0].text
     if to_print:
@@ -212,6 +213,7 @@ def call_chat_gpt(prompt, api_key, to_print=False):
         
     return message
 
+# Combine prompts to create a prompt for GPT
 def make_prompt(captions):
     prompt = "tell me a short story about"
     for k in captions:
@@ -220,14 +222,17 @@ def make_prompt(captions):
         prompt += " " + captions[k]['caption'][0]
     return prompt
 
+
+## Code below is for testing on our local dev machine
+## run this file with: python inference.py images_folder_path/ my_api_key
 # useGPT = True
 
 
 # images_path = str(sys.argv[1])
-# openai.api_key = str(sys.argv[2])
+# api_key = str(sys.argv[2])
 # captions = run_inference(images_path, to_print=True)
 # if useGPT:
 #     prompt = make_prompt(captions)
-#     call_chat_gpt(prompt, to_print=True)
+#     call_gpt(prompt, api_key, to_print=True)
 
 
